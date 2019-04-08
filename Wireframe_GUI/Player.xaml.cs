@@ -21,8 +21,11 @@ namespace Wireframe_GUI
     public partial class Player : Window
     {
         AxWMPLib.AxWindowsMediaPlayer axWmp; //The media player object
+        private double clipStart, clipStop = -1;
         private double origStartTime, origStopTime = -1; //Start/stop times, defaulted to a bad value which not in use
         private DispatcherTimer pauseTimer; //Background thread which pauses the video based on the given stop time
+        private int rowid = -1;
+        private TimeUpdateStack updateStack = TimeUpdateStack.Instance;
 
         /* Player
          * Description: Base constructor. Invokes the window and does nothing else
@@ -55,7 +58,7 @@ namespace Wireframe_GUI
          * Args: mediaFilePath - The path to the file to be played
          *       startingTime - The time to start at, in seconds
          */
-        public Player(string mediaFilePath, double startingTime)
+        public Player(string mediaFilePath, double startingTime, int row)
         {
             InitializeComponent();
 
@@ -65,6 +68,8 @@ namespace Wireframe_GUI
             axWmp.Ctlcontrols.currentPosition = startingTime;
             startTimeEntry.Text = startingTime.ToString();
             origStartTime = startingTime;
+            clipStart = startingTime;
+            rowid = row;
         }
 
         /* Player
@@ -74,7 +79,7 @@ namespace Wireframe_GUI
          *       startingTime - The time to start at, in seconds
          *       stoppingTime - The time to stop the video, in seconds
          */
-        public Player(string mediaFilePath, double startingTime, double stoppingTime)
+        public Player(string mediaFilePath, double startingTime, double stoppingTime, int row)
         {
             InitializeComponent();
 
@@ -86,6 +91,9 @@ namespace Wireframe_GUI
             stopTimeEntry.Text = stoppingTime.ToString();
             origStartTime = startingTime;
             origStopTime = stoppingTime;
+            clipStart = startingTime;
+            clipStop = stoppingTime;
+            rowid = row;
 
             playMediaWithStop(startingTime, stoppingTime);
         }
@@ -121,6 +129,11 @@ namespace Wireframe_GUI
          */
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (rowid != -1 && (clipStart != origStartTime || clipStop != origStopTime))
+            {
+                updateStack.PushUpdate(rowid, origStartTime.ToString(), origStopTime.ToString());
+            }
+
             axWmp.close();
         }
 
@@ -146,5 +159,16 @@ namespace Wireframe_GUI
             }
         }
 
+        private void newstartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            origStartTime = Math.Round(axWmp.Ctlcontrols.currentPosition, 2);
+            startTimeEntry.Text = origStartTime.ToString();
+        }
+
+        private void newstopBtn_Click(object sender, RoutedEventArgs e)
+        {
+            origStopTime = Math.Round(axWmp.Ctlcontrols.currentPosition, 2);
+            stopTimeEntry.Text = origStopTime.ToString();
+        }
     }
 }

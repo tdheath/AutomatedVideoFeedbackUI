@@ -23,3 +23,14 @@ C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug
 C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.CoreCompileInputs.cache
 C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.dll
 C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.pdb
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\bin\Debug\WmpAxLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\bin\Debug\WmpAxLib.pdb
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csprojAssemblyReference.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\Interop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\AxInterop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.ResolveComReference.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.WMPAxControl.resources
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.GenerateResource.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.CoreCompileInputs.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.pdb

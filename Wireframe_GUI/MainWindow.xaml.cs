@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Configuration;
 
 namespace Wireframe_GUI
 {
@@ -29,35 +30,35 @@ namespace Wireframe_GUI
         public const int STOPTIME = 1;
         public const int AUDIOLABEL = 2;
         public const int ATTNLABEL = 3;
-        public const int COMMENTS = 4;
-        public const int NOTES = 5;
+        public const int SCREENJPG = 4;
+        public const int COMMENTS = 5;
+        public const int NOTES = 6;
     }
 
     public partial class MainWindow : Window
     {
-        string directory = "";//Current directory to read data from
+        string directory = ConfigurationManager.AppSettings["basedirectory"];//Current directory to read data from
         //static Dictionary<string, string> AUDIO_LABELS = new Dictionary<string, string> { { "adult_only", "Adult" }, { "child_only", "Child" }, { "adult_child", "Adult\\Child" }, { "child_adult", "Child\\Adult" }, { "adult_child_adult", "Adult\\Child\\Adult" }, { "no_speech", "No Speech" } };
         //static Dictionary<string,string> ATTN_LABELS = new Dictionary<string,string> { {"shared","Shared"}, {"attentive","Attentive"}, {"inattentive","Inattentive"} };
         
         //The list of the prefix and the directories associated with it, in the form of { Prefix, DirectoriesList }
         Dictionary<string, List<string>> prefixedDirs = new Dictionary<string,List<string>>();
-
+        TimeUpdateStack updateStack;
+        ObservableCollection<InfoRow> newData = new ObservableCollection<InfoRow>();
         /* MainWindow
          * Description: Constructor for the program
          */
         public MainWindow()
         {
             InitializeComponent();
-
-            //TODO: Replace with more likely generic path
-            directory = @"C:\";
             populateCombobox();
+            updateStack = TimeUpdateStack.Instance;
         }
 
         /* populateTable
          * Description: Method to go through the results csv file and build the table from it.
          * Args:    dataDir - The path to the directory containing the data.
-         */ 
+         */
         private void populateTable(string dataDir)
         {
             
@@ -71,12 +72,12 @@ namespace Wireframe_GUI
             StreamReader csvReader = new StreamReader(dataDir + "\\" + resultsCSV);
             string[] lineSplit;
             string mediaPath, startTime;
-            ObservableCollection<InfoRow> newData = new ObservableCollection<InfoRow>();
+//            ObservableCollection<InfoRow> newData = new ObservableCollection<InfoRow>();
 
             while (csvReader.Peek() >= 0)
             {
                 lineSplit = csvReader.ReadLine().Split(',');
-                if(lineSplit.Length < 6)
+                if(lineSplit.Length < 7)
                 {
                     //TODO:Throw error?
                     continue;
@@ -101,8 +102,8 @@ namespace Wireframe_GUI
                                     startTime + "-" +
                                     lineSplit[CSVIndices.STOPTIME].TrimStart("0".ToCharArray()) +
                                     "_" + lineSplit[CSVIndices.ATTNLABEL];
-                newRow.screenPath = mediaPath + ".jpg";
-                newRow.videoPath = mediaPath + ".mp4";
+                newRow.screenPath = dataDir +"\\" + lineSplit[CSVIndices.SCREENJPG];
+                newRow.videoPath = dataDir + "\\full_video.wmv"+";"+ lineSplit[CSVIndices.STARTTIME] + ";"+ lineSplit[CSVIndices.STOPTIME] + ";" + (newData.Count).ToString();
                 newData.Add(newRow);
             }
             csvReader.Close();
@@ -249,6 +250,7 @@ namespace Wireframe_GUI
             if (Directory.Exists(prefixedDirs[selPrefix][0] + "\\graphs"))
             {
                 showGraphBtn.Tag = prefixedDirs[selPrefix][0] + "\\graphs";
+                playVideoBtn.Tag = prefixedDirs[selPrefix][0] + "\\full_video.wmv";
             }
 
             //Always default to the first tab
@@ -265,14 +267,14 @@ namespace Wireframe_GUI
             Button mediaBtn = sender as Button;
             Player mediaPlayer;
             //Pull the stored filepath from the button's tag
-            string mediaFile = (string)mediaBtn.Tag;
+            string tag = (string)mediaBtn.Tag;
+            string mediaFile = tag.Split(';')[0];
+            string beginTime = tag.Split(';')[1];
+            string stopTime = tag.Split(';')[2];
+            int row = int.Parse(tag.Split(';')[3]);
             double startSecs, stopSecs;
 
             //TODO: Is this still needed?
-            //Parse out the start/stop times of the video from the filename
-            string fileName = mediaFile.Substring(mediaFile.LastIndexOf('\\') + 1);
-            string beginTime = fileName.Substring(0, fileName.IndexOf('-'));
-            string stopTime = fileName.Substring(fileName.IndexOf('-') + 1, fileName.IndexOf('_') - fileName.IndexOf('-') - 1);
            
             //If the start time fails, then just start at the beginning. 
             //If the stop time fails, only use the start time, otherwise use both. 
@@ -282,11 +284,11 @@ namespace Wireframe_GUI
             }
             else if (!Double.TryParse(stopTime, out stopSecs))
             {
-                mediaPlayer = new Player(mediaFile, startSecs);
+                mediaPlayer = new Player(mediaFile, startSecs, row);
             }
             else
             {
-                mediaPlayer = new Player(mediaFile, startSecs, stopSecs);
+                mediaPlayer = new Player(mediaFile, startSecs, stopSecs, row);
             }
 
 
@@ -364,6 +366,34 @@ namespace Wireframe_GUI
             saveToCSV();
         }
 
+        private void window_Activated(object sender, EventArgs e)
+        {
+            bool updated = false;
+            while(!updateStack.IsStackEmpty())
+            {
+                int rowid = updateStack.PopUpdate(out string seg);
+                var segsplit = seg.Split('-');
+                newData[rowid].timeRange = seg;
+                string[] newpath = newData[rowid].videoPath.Split(';');
+                newData[rowid].videoPath = newpath[0] + ';' + segsplit[0] + ';' + segsplit[1] + ';' + newpath[3];
+                updated = true;
+            }
+
+            if(updated)
+            {
+                dataTable.ItemsSource = newData;
+                dataTable.Items.Refresh();
+            }
+        }
+
+        private void playfullBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (playVideoBtn != null)
+            {
+                var mediaPlayer = new Player(playVideoBtn.Tag.ToString());
+                mediaPlayer.Show();
+            }
+        }
         #endregion
 
         #region DEPRECATED CODE
