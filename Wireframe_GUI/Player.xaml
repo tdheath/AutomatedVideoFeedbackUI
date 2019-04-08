@@ -5,10 +5,19 @@
         xmlns:ax="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib" 
         Title="Player" Height="600" Width="750" Closing="Window_Closing">
     <Grid>
+        <Grid.Resources>
+            <Style x:Key="textColStyle" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         
         <WindowsFormsHost x:Name="formsHost" Grid.Row="0">
@@ -27,6 +36,37 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="restartBtn" Content="Restart Clip" Margin="10,5,10,5" Click="restartBtn_Click"/>
         </StackPanel>
-        
+
+            <DataGrid x:Name="commentTable" AutoGenerateColumns="True" AlternatingRowBackground="#e9ebf5" CanUserResizeColumns="True" RowBackground="#cfd5ea" BorderBrush="Transparent" Margin="0,0,0,10" Grid.Row="3">
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1px"/>
+
+                        <!--Disable the appearance of rows being selected-->
+                        <Style.Triggers>
+                            <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#4472c4"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="14px"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns>
+                <DataGridTextColumn x:Name="startTimeCol" Width="1*" Header="Start Time" Binding="{Binding Path=start}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                    <DataGridTextColumn x:Name="durationCol" Width="1*" Header="Duration (secs)"  Binding="{Binding Path=duration}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                    <DataGridTextColumn x:Name="commentCol" Width="3*" Header="Comment"  Binding="{Binding Path=comment}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                </DataGrid.Columns> 
+            </DataGrid>
+
     </Grid>
 </Window>

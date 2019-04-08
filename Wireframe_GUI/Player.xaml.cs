@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,14 @@ using System.Windows.Threading;
 
 namespace Wireframe_GUI
 {
+
+    public class CommentRow
+    {
+        public string start { get; set; }
+        public string duration { get; set; }
+        public string comment { get; set; }
+    }
+
     /// <summary>
     /// Class which includes a separate window that plays videos sent by the main GUI
     /// </summary>
@@ -26,6 +35,7 @@ namespace Wireframe_GUI
         private DispatcherTimer pauseTimer; //Background thread which pauses the video based on the given stop time
         private int rowid = -1;
         private TimeUpdateStack updateStack = TimeUpdateStack.Instance;
+        ObservableCollection<CommentRow> newData = new ObservableCollection<CommentRow>();
 
         /* Player
          * Description: Base constructor. Invokes the window and does nothing else
@@ -83,6 +93,7 @@ namespace Wireframe_GUI
         {
             InitializeComponent();
 
+            commentTable.ItemsSource = newData;
             // Get the AxHost wrapper from the WindowsFormsHost control.
             axWmp = formsHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             axWmp.URL = mediaFilePath;
