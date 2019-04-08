@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-
 
 namespace Wireframe_GUI
 {
@@ -150,22 +142,31 @@ namespace Wireframe_GUI
         {
             string prefix;
 
-            foreach (string dirName in Directory.EnumerateDirectories(directory))
+            try
             {
-                //Pull the prefix off of the filename, then group into the dictionary
-                prefix = dirName.Substring(dirName.LastIndexOf('\\') + 1, dirName.IndexOf("_") - dirName.LastIndexOf('\\') - 1).ToUpper();
+                foreach (string dirName in Directory.EnumerateDirectories(directory))
+                {
+                    //Pull the prefix off of the filename, then group into the dictionary
+                    //Do this in multiple steps to avoid false flags for certain chars
+                    prefix = dirName.Substring(dirName.LastIndexOf('\\') + 1);
+                    prefix = prefix.Substring(0, prefix.IndexOf("_")).ToUpper();
 
-                if (prefixedDirs.ContainsKey(prefix))
-                {
-                    prefixedDirs[prefix].Add(dirName);
+                    if (prefixedDirs.ContainsKey(prefix))
+                    {
+                        prefixedDirs[prefix].Add(dirName);
+                    }
+                    else
+                    {
+                        prefixedDirs.Add(prefix, new List<string> { dirName });
+                    }
                 }
-                else
-                {
-                    prefixedDirs.Add(prefix, new List<string> { dirName });
-                }
+
+                prefixCombo.ItemsSource = prefixedDirs.Keys;
             }
-
-            prefixCombo.ItemsSource = prefixedDirs.Keys;
+            catch(Exception e)
+            {
+                MessageBox.Show("Error reading data files: \n" + e.Message);
+            }
         }
 
         /* saveToCSV

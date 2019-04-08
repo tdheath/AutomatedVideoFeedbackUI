@@ -12,3 +12,14 @@ C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj
 C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.GenerateResource.Cache
 C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.dll
 C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.pdb
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\Wireframe_GUI\bin\Debug\WmpAxLib.dll
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\Wireframe_GUI\bin\Debug\WmpAxLib.pdb
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csprojAssemblyReference.cache
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\Interop.WMPLib.dll
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.ResolveComReference.cache
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.WMPAxControl.resources
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.GenerateResource.cache
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.CoreCompileInputs.cache
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.dll
+C:\Users\Tracey\Source\Repos\tdheath\AutomatedVideoFeedbackUI\WmpAxLib\obj\Debug\WmpAxLib.pdb
