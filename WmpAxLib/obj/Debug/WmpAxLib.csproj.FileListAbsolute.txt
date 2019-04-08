@@ -1,0 +1,14 @@
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\bin\Debug\WmpAxLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\bin\Debug\WmpAxLib.pdb
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\bin\Debug\Interop.WMPLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\Wireframe_GUI\bin\Debug\WmpAxLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\Wireframe_GUI\bin\Debug\WmpAxLib.pdb
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.csprojResolveAssemblyReference.cache
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\Interop.WMPLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.ResolveComReference.cache
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.WMPAxControl.resources
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.csproj.GenerateResource.Cache
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.dll
+C:\Users\Tracey\documents\visual studio 2012\Projects\Wireframe_GUI\WmpAxLib\obj\Debug\WmpAxLib.pdb
