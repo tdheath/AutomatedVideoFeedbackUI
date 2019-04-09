@@ -37,7 +37,7 @@
             <Button x:Name="restartBtn" Content="Restart Clip" Margin="10,5,10,5" Click="restartBtn_Click"/>
         </StackPanel>
 
-            <DataGrid x:Name="commentTable" AutoGenerateColumns="True" AlternatingRowBackground="#e9ebf5" CanUserResizeColumns="True" RowBackground="#cfd5ea" BorderBrush="Transparent" Margin="0,0,0,10" Grid.Row="3">
+            <DataGrid x:Name="commentTable" AutoGenerateColumns="False" AlternatingRowBackground="#e9ebf5" CanUserResizeColumns="True" RowBackground="#cfd5ea" BorderBrush="Transparent" Margin="0,0,0,10" Grid.Row="3">
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderBrush" Value="White"/>
