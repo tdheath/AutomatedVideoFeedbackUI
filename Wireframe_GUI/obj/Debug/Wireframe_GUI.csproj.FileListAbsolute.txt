@@ -84,3 +84,4 @@ D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\obj\Debug\Wir
 D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\obj\Debug\Wireframe_GUI.csproj.CopyComplete
 D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\obj\Debug\Wireframe_GUI.exe
 D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\obj\Debug\Wireframe_GUI.pdb
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\Wireframe_GUI\obj\Debug\Wireframe_GUI_Content.g.cs

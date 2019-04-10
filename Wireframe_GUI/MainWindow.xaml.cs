@@ -44,6 +44,7 @@ namespace Wireframe_GUI
         //The list of the prefix and the directories associated with it, in the form of { Prefix, DirectoriesList }
         Dictionary<string, List<string>> prefixedDirs = new Dictionary<string,List<string>>();
         TimeUpdateStack updateStack;
+        private InVideoCommentHandler invideoCommentH;
         ObservableCollection<InfoRow> newData = new ObservableCollection<InfoRow>();
         /* MainWindow
          * Description: Constructor for the program
@@ -53,6 +54,7 @@ namespace Wireframe_GUI
             InitializeComponent();
             populateCombobox();
             updateStack = TimeUpdateStack.Instance;
+            invideoCommentH = InVideoCommentHandler.Instance;
         }
 
         /* populateTable
@@ -197,15 +199,24 @@ namespace Wireframe_GUI
          */ 
         private void exportData(string exportDir)
         {
-            string baseDir;
+            int rowcount = 0;
             foreach (InfoRow row in dataTable.Items)
             {
-                baseDir = exportDir + "\\" + row.videoPath.Substring(row.videoPath.LastIndexOf('\\') + 1, row.videoPath.LastIndexOf('.') - 1);
-                Directory.CreateDirectory(baseDir);
-                if (row.comment != "")
+                var comlist = new List<InVideoCommentStruct>();
+                if (row.comment != "" || invideoCommentH.TryGetComments(rowcount, out comlist))
                 {
-                    //Update video clip here
+                    var split = row.videoPath.Split(';');
+                    string clipname = string.Format("{0}\\{1}_{2}.wmv",exportDir,row.timeRange,row.attnLabel); 
+                    if (comlist.Count > 0)
+                    {
+                        VideoClipCreator.CreateClipWithText(split[0], clipname, Double.Parse(split[1]), Double.Parse(split[2]), comlist);
+                    }
+                    else
+                    {
+                        VideoClipCreator.CreateClip(split[0], Double.Parse(split[1]), Double.Parse(split[2]), clipname);
+                    }
                 }
+                rowcount++;
             }
         }
 
@@ -251,6 +262,7 @@ namespace Wireframe_GUI
             {
                 showGraphBtn.Tag = prefixedDirs[selPrefix][0] + "\\graphs";
                 playVideoBtn.Tag = prefixedDirs[selPrefix][0] + "\\full_video.wmv";
+                exportBtn.Tag = prefixedDirs[selPrefix][0] + "\\exportclips";
             }
 
             //Always default to the first tab

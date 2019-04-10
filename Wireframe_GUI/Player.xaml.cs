@@ -20,7 +20,7 @@ namespace Wireframe_GUI
     public class CommentRow
     {
         public string start { get; set; }
-        public string duration { get; set; }
+        public string stop { get; set; }
         public string comment { get; set; }
     }
 
@@ -35,6 +35,7 @@ namespace Wireframe_GUI
         private DispatcherTimer pauseTimer; //Background thread which pauses the video based on the given stop time
         private int rowid = -1;
         private TimeUpdateStack updateStack = TimeUpdateStack.Instance;
+        private InVideoCommentHandler invideoCommentH = InVideoCommentHandler.Instance;
         ObservableCollection<CommentRow> newData = new ObservableCollection<CommentRow>();
 
         /* Player
@@ -144,6 +145,18 @@ namespace Wireframe_GUI
             {
                 updateStack.PushUpdate(rowid, origStartTime.ToString(), origStopTime.ToString());
             }
+
+            try
+            {
+                foreach (CommentRow crow in commentTable.Items)
+                {
+                    if (!string.IsNullOrEmpty(crow.comment))
+                    {
+                        invideoCommentH.LoadComment(rowid, crow.start, crow.stop, crow.comment);
+                    }
+                }
+            }
+            catch (InvalidCastException) {  }
 
             axWmp.close();
         }

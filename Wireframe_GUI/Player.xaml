@@ -17,7 +17,7 @@
             <RowDefinition Height="90*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="6*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         
         <WindowsFormsHost x:Name="formsHost" Grid.Row="0">
@@ -62,9 +62,9 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
-                <DataGridTextColumn x:Name="startTimeCol" Width="1*" Header="Start Time" Binding="{Binding Path=start}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
-                    <DataGridTextColumn x:Name="durationCol" Width="1*" Header="Duration (secs)"  Binding="{Binding Path=duration}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
-                    <DataGridTextColumn x:Name="commentCol" Width="3*" Header="Comment"  Binding="{Binding Path=comment}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                <DataGridTextColumn x:Name="start" Width="1*" Header="Start Time" Binding="{Binding Path=start}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                    <DataGridTextColumn x:Name="stop" Width="1*" Header="Stop Time"  Binding="{Binding Path=stop}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
+                    <DataGridTextColumn x:Name="comment" Width="3*" Header="Comment"  Binding="{Binding Path=comment}" IsReadOnly="False" ElementStyle="{StaticResource textColStyle}"/>
                 </DataGrid.Columns> 
             </DataGrid>
 
