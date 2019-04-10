@@ -263,6 +263,7 @@ namespace Wireframe_GUI
                 showGraphBtn.Tag = prefixedDirs[selPrefix][0] + "\\graphs";
                 playVideoBtn.Tag = prefixedDirs[selPrefix][0] + "\\full_video.wmv";
                 exportBtn.Tag = prefixedDirs[selPrefix][0] + "\\exportclips";
+                showCompGraphBtn.Tag = prefixedDirs[selPrefix][0] + "\\compgraphs";
             }
 
             //Always default to the first tab
@@ -349,7 +350,11 @@ namespace Wireframe_GUI
          */ 
         private void showCompGraphBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Show comparison graphs here
+            if (showCompGraphBtn.Tag != null)
+            {
+                ImageViewer imgView = new ImageViewer(showCompGraphBtn.Tag.ToString());
+                imgView.Show();
+            }
         }
 
         /* exportBtn_Click
