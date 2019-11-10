@@ -168,7 +168,7 @@ namespace Wireframe_GUI
             }
             catch(Exception e)
             {
-                MessageBox.Show("Error reading data files: \n" + e.Message);
+ //               MessageBox.Show("Error reading data files: \n" + e.Message);
             }
         }
 
@@ -199,12 +199,18 @@ namespace Wireframe_GUI
          */ 
         private void exportData(string exportDir)
         {
+            List<string> commentsList = new List<string>();
             int rowcount = 0;
             foreach (InfoRow row in dataTable.Items)
             {
                 var comlist = new List<InVideoCommentStruct>();
                 if (row.comment != "" || invideoCommentH.TryGetComments(rowcount, out comlist))
                 {
+                    if(row.comment != "")
+                    {
+                        commentsList.Add(string.Format("{0}_{1}.wmv,{2}",row.timeRange,row.attnLabel,row.comment));
+                    }
+
                     var split = row.videoPath.Split(';');
                     string clipname = string.Format("{0}\\{1}_{2}.wmv",exportDir,row.timeRange,row.attnLabel); 
                     if (comlist.Count > 0)
@@ -217,6 +223,13 @@ namespace Wireframe_GUI
                     }
                 }
                 rowcount++;
+            }
+            using (StreamWriter commfile = new StreamWriter(exportDir + "\\comments.csv"))
+            {
+                foreach(string com in commentsList)
+                {
+                    commfile.WriteLine(com);
+                }
             }
         }
 

@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wireframe_GUI", "Wireframe_GUI\Wireframe_GUI.csproj", "{8643CAF5-7DA2-44E0-BCB9-551C04B78684}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRTVideoViewer", "Wireframe_GUI\PRTVideoViewer.csproj", "{8643CAF5-7DA2-44E0-BCB9-551C04B78684}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmpAxLib", "WmpAxLib\WmpAxLib.csproj", "{7DEDEEBC-61A4-46D4-A589-A6C9623445E6}"
 EndProject
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EE028EE-C85C-480E-9F61-CA9142F23964}
 	EndGlobalSection
 EndGlobal

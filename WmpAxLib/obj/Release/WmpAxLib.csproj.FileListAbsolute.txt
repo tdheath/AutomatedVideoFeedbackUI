@@ -1,0 +1,13 @@
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\bin\Release\WmpAxLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\bin\Release\WmpAxLib.pdb
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\bin\Release\Interop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\bin\Release\AxInterop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.csprojAssemblyReference.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\Interop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\AxInterop.WMPLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.csproj.ResolveComReference.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.WMPAxControl.resources
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.csproj.GenerateResource.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.csproj.CoreCompileInputs.cache
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.dll
+D:\Corey\Documents\Projects\AutomatedVideoFeedbackUI\WmpAxLib\obj\Release\WmpAxLib.pdb

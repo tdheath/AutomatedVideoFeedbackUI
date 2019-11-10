@@ -17,7 +17,7 @@
             <RowDefinition Height="90*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="6*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         
         <WindowsFormsHost x:Name="formsHost" Grid.Row="0">
@@ -30,7 +30,7 @@
             <Button x:Name="setNewStartTime" Margin="10,5,10,5" Content="Update Start" Click="newstartBtn_Click"/>
             <Label Content="Stop Time (Secs):" Margin="5,0,0,5"/>
             <TextBox x:Name="stopTimeEntry" Width="150" Margin="5"/>
-            <Button x:Name="setNewStopTime" Margin="10,5,10,5" Content="Update Time" Click="newstopBtn_Click"/>
+            <Button x:Name="setNewStopTime" Margin="10,5,10,5" Content="Update End" Click="newstopBtn_Click"/>
         </StackPanel>
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
